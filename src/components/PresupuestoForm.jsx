@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Mensaje } from './Mensaje';
 
-export const PresupuestoForm = ({ presupuesto, setPresupuesto }) => {
+export const PresupuestoForm = ({ presupuesto, setPresupuesto, setIsValidPresupuesto }) => {
 	const [mensaje, setMensaje] = useState('');
 
 	const handlePresupuesto = (e) => {
@@ -12,6 +12,7 @@ export const PresupuestoForm = ({ presupuesto, setPresupuesto }) => {
 			return;
 		}
 		setMensaje('');
+		setIsValidPresupuesto(true);
 	};
 
 	return (
