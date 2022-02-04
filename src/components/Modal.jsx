@@ -28,7 +28,7 @@ export const Modal = ({ setModal, animarModal, setAnimarModal, setGastos, gastos
 			gasto.id = getId();
 			gasto.fecha = Date.now();
 			gasto.cantidad = Number(gasto.cantidad);
-			setGastos([...gastos, gasto]);
+			setGastos([gasto, ...gastos]);
 			console.log(gastos);
 			cerrarModal();
 		}
