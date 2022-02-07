@@ -24,6 +24,7 @@ export const PresupuestoForm = ({ presupuesto, setPresupuesto, setIsValidPresupu
 						className="nuevo-presupuesto"
 						type="number"
 						placeholder="$$$"
+						value={presupuesto}
 						onChange={(e) => setPresupuesto(Number(e.target.value))}
 					/>
 				</div>

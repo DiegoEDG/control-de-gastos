@@ -5,7 +5,7 @@ import 'react-circular-progressbar/dist/styles.css';
 export const ControlPresupuesto = ({ presupuesto, gastos }) => {
 	const [disponible, setDisponible] = useState(0);
 	const [gastado, setGastado] = useState(0);
-	const [porcentajeGastado, setPorcentajeGastado] = useState(0);
+	const [porcentajeGastado, setPorcentajeGastado] = useState(10);
 
 	useEffect(() => {
 		const totalGastado = gastos.reduce((total, gasto) => gasto.cantidad + total, 0);
