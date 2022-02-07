@@ -1,4 +1,4 @@
-# control-de-gastos
+# Aplicación de control de gastos
 
 Link del proyecto: https://romantic-kowalevski-b69217.netlify.app/
 
