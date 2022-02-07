@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getId } from '../helpers';
 import IconoCerrar from '../img/cerrar.svg';
 import { Mensaje } from './Mensaje';
 
-export const Modal = ({ setModal, animarModal, setAnimarModal, setGastos, gastos }) => {
+export const Modal = ({ setModal, animarModal, setAnimarModal, setGastos, gastos, gastoEditar, setGastoEditar }) => {
 	const [mensaje, setMensaje] = useState('');
 	const [gasto, setGasto] = useState({
 		nombre: '',
@@ -11,9 +11,14 @@ export const Modal = ({ setModal, animarModal, setAnimarModal, setGastos, gastos
 		categoria: ''
 	});
 
+	useEffect(() => {
+		if (Object.keys(gastoEditar).length > 0) {
+			setGasto(gastoEditar);
+		}
+	}, [gastoEditar]);
+
 	const handleGasto = (e) => {
 		setGasto({ ...gasto, [e.target.name]: e.target.value });
-		console.log(gasto);
 	};
 
 	const handleSubmitGastos = (e) => {
@@ -24,18 +29,29 @@ export const Modal = ({ setModal, animarModal, setAnimarModal, setGastos, gastos
 				setMensaje('');
 			}, 3000);
 			return;
+		} else if (gasto.id) {
+			console.log(gasto);
+			const gastosActualizados = gastos.map((gastoAlmacenado) =>
+				gastoAlmacenado.id === gasto.id ? gasto : gastoAlmacenado
+			);
+
+			setGastos(gastosActualizados);
+			console.log(gastosActualizados);
 		} else {
 			gasto.id = getId();
 			gasto.fecha = Date.now();
 			gasto.cantidad = Number(gasto.cantidad);
 			setGastos([gasto, ...gastos]);
-			console.log(gastos);
-			cerrarModal();
 		}
+		setAnimarModal(false);
+		setTimeout(() => {
+			setModal(false);
+		}, 500);
 	};
 
 	const cerrarModal = () => {
 		setAnimarModal(false);
+		setGastoEditar({});
 		setTimeout(() => {
 			setModal(false);
 		}, 500);
@@ -52,7 +68,7 @@ export const Modal = ({ setModal, animarModal, setAnimarModal, setGastos, gastos
 					handleSubmitGastos(e);
 				}}
 			>
-				<legend>Nuevo Gasto</legend>
+				<legend>{Object.keys(gastoEditar).length > 0 ? 'Editar Gasto' : 'Nuevo Gasto'}</legend>
 				{mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
 				<div className="campo">
 					<label htmlFor="nombre">Nombre del Gasto</label>
@@ -61,7 +77,7 @@ export const Modal = ({ setModal, animarModal, setAnimarModal, setGastos, gastos
 						name="nombre"
 						id="nombre"
 						placeholder="Nombre del gasto"
-						value={gasto.name}
+						value={gasto.nombre}
 						onChange={(e) => {
 							handleGasto(e);
 						}}
@@ -100,7 +116,7 @@ export const Modal = ({ setModal, animarModal, setAnimarModal, setGastos, gastos
 						<option value="suscripciones">Suscripciones</option>
 					</select>
 				</div>
-				<input type="submit" value="Agregar Gasto" />
+				<input type="submit" value={Object.keys(gastoEditar).length > 0 ? 'Guardar cambios' : 'Agregar gasto'} />
 			</form>
 		</div>
 	);
