@@ -30,7 +30,7 @@ export const Modal = ({ setModal, animarModal, setAnimarModal, setGastos, gastos
 			}, 3000);
 			return;
 		} else if (gasto.id) {
-			console.log(gasto);
+			gasto.cantidad = Number(gasto.cantidad);
 			const gastosActualizados = gastos.map((gastoAlmacenado) =>
 				gastoAlmacenado.id === gasto.id ? gasto : gastoAlmacenado
 			);
