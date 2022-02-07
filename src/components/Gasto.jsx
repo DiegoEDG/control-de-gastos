@@ -11,8 +11,8 @@ import IconoOcio from '../img/icono_ocio.svg';
 import IconoSalud from '../img/icono_salud.svg';
 import IconoSuscripciones from '../img/icono_suscripciones.svg';
 
-export const Gasto = ({ gasto, setGastoEditar }) => {
-	const { nombre, cantidad, categoria, fecha } = gasto;
+export const Gasto = ({ gasto, setGastoEditar, eliminarGasto }) => {
+	const { id, nombre, cantidad, categoria, fecha } = gasto;
 	const diccionarioIconos = {
 		ahorro: IconoAhorro,
 		casa: IconoCasa,
@@ -38,8 +38,9 @@ export const Gasto = ({ gasto, setGastoEditar }) => {
 		<TrailingActions>
 			<SwipeAction
 				onClick={() => {
-					return console.log('Eliminando...');
+					eliminarGasto(id);
 				}}
+				destructive={true}
 			>
 				Eliminar
 			</SwipeAction>

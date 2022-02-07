@@ -36,7 +36,7 @@ export const Modal = ({ setModal, animarModal, setAnimarModal, setGastos, gastos
 			);
 
 			setGastos(gastosActualizados);
-			console.log(gastosActualizados);
+			setGastoEditar({});
 		} else {
 			gasto.id = getId();
 			gasto.fecha = Date.now();
