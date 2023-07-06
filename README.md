@@ -1,7 +1,19 @@
-# Aplicación de control de gastos
+<h1>Expenses Manager App 🤑</h1>
 
-Link del proyecto: https://romantic-kowalevski-b69217.netlify.app/
+## Overview 📘
+Expenses Manager App where you can track your expenses based on a budget that you can define.
 
-Aplicación de control de gastos hecha con React
+## Demo 🌐
+https://romantic-kowalevski-b69217.netlify.app/
 
-Nota: Para editar desliza el registro hacía la derecha o si deseas eliminar un registro desliza el registro hacia la izquierda
+## Scrennshot 📷
+<img src='./expenses.png'>
+
+## Features
+- Add expenses with category
+- Edit the entry sliding to the right
+- Delete the entry sliding to left
+- Visual alert when the budget is close to spend completly
+
+## Technologies
+- React Js
