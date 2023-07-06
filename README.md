@@ -7,7 +7,7 @@ Expenses Manager App where you can track your expenses based on a budget that yo
 https://romantic-kowalevski-b69217.netlify.app/
 
 ## Scrennshot 📷
-<img src='./expenses.png'>
+<img src='./expenses.png' width='300'>
 
 ## Features
 - Add expenses with category
